@@ -31,6 +31,10 @@ echo '#!/bin/sh' > /etc/network/if-pre-up.d/iptables
 echo '/sbin/iptables-restore < /etc/iptables.rules' >> /etc/network/if-pre-up.d/iptables
 chmod +x /etc/network/if-pre-up.d/iptables
 
+############## ohmyzsh
+apt-get update
+apt-get -y install zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
 ##############  NGINX
