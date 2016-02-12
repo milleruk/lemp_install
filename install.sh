@@ -31,12 +31,6 @@ echo '#!/bin/sh' > /etc/network/if-pre-up.d/iptables
 echo '/sbin/iptables-restore < /etc/iptables.rules' >> /etc/network/if-pre-up.d/iptables
 chmod +x /etc/network/if-pre-up.d/iptables
 
-############## ohmyzsh
-apt-get update
-apt-get -y install zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-
 ##############  NGINX - Remove Apache
 /etc/init.d/apache2 stop
 update-rc.d -f apache2 remove
@@ -136,6 +130,12 @@ service nginx restart
 
 wget -O /root/addsite.sh https://raw.githubusercontent.com/milleruk/server_scripts/master/addsite.sh
 chmod +x /root/addsite.sh
+
+############## ohmyzsh
+apt-get update
+apt-get -y install zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 
 echo
 echo
