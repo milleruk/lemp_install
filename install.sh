@@ -60,9 +60,9 @@ rm -f /etc/nginx/conf.d/example_ssl.conf
 openssl dhparam -out /etc/nginx/dhparam.pem 2048
 
 # Put standard drupal config in place. Can be replaced with any config
-wget -O /etc/nginx/conf.d/redirect_to_https.conf https://raw.githubusercontent.com/milleruk/lemp_install/master/redirect_to_https.conf
-wget -O /etc/nginx/default_nginx_site.example https://raw.githubusercontent.com/milleruk/lemp_install/master/default_nginx_site.example
-wget -O /etc/nginx/conf.d/nginx_extra.conf https://raw.githubusercontent.com/milleruk/lemp_install/master/nginx_extra.conf
+wget -O /etc/nginx/conf.d/redirect_to_https.conf https://raw.githubusercontent.com/milleruk/server_scripts/master/redirect_to_https.conf
+wget -O /etc/nginx/default_nginx_site.example https://raw.githubusercontent.com/milleruk/server_scripts/master/default_nginx_site.example
+wget -O /etc/nginx/conf.d/nginx_extra.conf https://raw.githubusercontent.com/milleruk/server_scripts/master/nginx_extra.conf
 
 ############## MariaDB
 MYSQL_PASSWORD=$(pwgen -s 12 1)
@@ -120,7 +120,7 @@ service unattended-upgrades restart
 service php5-fpm restart
 service nginx restart
 
-wget -O /root/addsite.sh https://raw.githubusercontent.com/milleruk/lemp_install/master/addsite.sh
+wget -O /root/addsite.sh https://raw.githubusercontent.com/milleruk/server_scripts/master/addsite.sh
 chmod +x /root/addsite.sh
 
 echo
