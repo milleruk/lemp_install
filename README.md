@@ -1,9 +1,19 @@
 # Server Install Scripts
 
-# ${1:Project Name}
 TODO: Write a project description
-## Installation
-TODO: Describe the installation process
-## Usage
-TODO: Write usage instructions
 
+## Included in Script
+* OHMYZSH
+* Nginx
+* MariaDB
+* Lets Encrypt
+* PHP
+* Auto Domain Creator with LetsEncrtpy
+
+## Installation
+run ./install.sh
+
+## Usage
+
+Create a New Site:
+run /root/addsite.sh www.example.tld
