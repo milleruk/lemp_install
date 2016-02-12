@@ -37,14 +37,16 @@ apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
-##############  NGINX
+##############  NGINX - Remove Apache
+/etc/init.d/apache2 stop
+update-rc.d -f apache2 remove
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 echo 'deb http://nginx.org/packages/mainline/debian/ jessie nginx' >> /etc/apt/sources.list
 echo 'deb-src http://nginx.org/packages/mainline/debian/ jessie nginx' >> /etc/apt/sources.list
 
 apt-get -y update && apt-get upgrade
-apt-get -y install nginx mariadb-server mariadb-client php5-fpm php5-mysqlnd php5-curl php5-gd php-pear php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-intl curl git unzip sudo pwgen apache2-utils rsync
+apt-get -y install nginx mariadb-server mariadb-client php5-fpm php5-mysqlnd php5-curl php5-gd php-pear php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-intl curl git unzip sudo pwgen apache2-utils rsync fail2ban
 
 sed -i 's/worker_processes .*/worker_processes '${NR_CPUS}';/' /etc/nginx/nginx.conf
 sed -i -e"s/keepalive_timeout\s*65/keepalive_timeout 2/" /etc/nginx/nginx.conf
@@ -96,6 +98,11 @@ pm.max_requests=500
 listen=127.0.0.1:9000
 EOL
 
+#############  Additional Tools
+apt-get install -y build-essential redis-server memcached
+update-rc.d redis-server defaults
+update-rc.d memcached defaults
+
 
 ############## drush
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -110,6 +117,13 @@ cd /opt/letsencrypt
 ./letsencrypt-auto
 
 mkdir /var/www/letsencrypt
+
+############## Fresue
+#git clone git://github.com/kamisama/Fresque.git /opt/fresque
+#cd /opt/fresque
+#curl -s https://getcomposer.org/installer | php
+#php composer.phar install
+
 
 ##############  unattended upgrades
 apt-get -y install unattended-upgrades apt-listchanges
