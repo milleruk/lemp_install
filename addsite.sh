@@ -15,7 +15,7 @@ if [ $? -ne 0 ]
  else
 	cat >> "/etc/cron.monthly/letsencrypt_$DOMAIN.sh" <<EOL
 #!/bin/sh
-/opt/letsencrypt/letsencrypt-auto certonly --email info@timdejong.nl --text --agree-tos -a webroot --webroot-path /var/www/letsencrypt --renew-by-default -d $DOMAIN
+/opt/letsencrypt/letsencrypt-auto certonly --email bharesign@gmail.com --text --agree-tos -a webroot --webroot-path /var/www/letsencrypt --renew-by-default -d $DOMAIN
 /etc/init.d/nginx reload
 EOL
 	
