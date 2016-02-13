@@ -83,7 +83,7 @@ listen=127.0.0.1:9000
 EOL
 
 #############  Additional Tools
-apt-get install -y build-essential redis-server memcached fail2ban
+apt-get install -y build-essential redis-server memcached fail2ban zsh
 update-rc.d redis-server defaults
 update-rc.d memcached defaults
 
@@ -115,19 +115,10 @@ wget -O /root/addsite.sh https://raw.githubusercontent.com/milleruk/server_scrip
 chmod +x /root/addsite.sh
 
 ############## ohmyzsh
-apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
 echo
-echo
-echo "==========================================================="
-echo    _____  .__.__  .__                      __    
-echo   /     \ |__|  | |  |   ___________ __ __|  | __
-echo  /  \ /  \|  |  | |  | _/ __ \_  __ \  |  \  |/ /
-echo /    Y    \  |  |_|  |_\  ___/|  | \/  |  /    < 
-echo \____|__  /__|____/____/\___  >__|  |____/|__|_ \
-echo         \/                  \/                 \/
 echo
 echo "==========================================================="
 echo "Ip is: $IP"
