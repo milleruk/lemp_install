@@ -58,18 +58,8 @@ wget -O /etc/nginx/conf.d/redirect_to_https.conf https://raw.githubusercontent.c
 wget -O /etc/nginx/default_nginx_site.example https://raw.githubusercontent.com/milleruk/server_scripts/master/default_nginx_site.example
 wget -O /etc/nginx/conf.d/nginx_extra.conf https://raw.githubusercontent.com/milleruk/server_scripts/master/nginx_extra.conf
 
-############## MariaDB
-MYSQL_PASSWORD=$(pwgen -s 12 1)
-
-echo -e "\n\Y\n$MYSQL_PASSWORD\n$MYSQL_PASSWORD\n\n\n\n\n" | mysql_secure_installation 2>/dev/null
-
-# Create site database
-MYSQLWEB_USER=site
-MYSQLWEB_DB=site
-MYSQLWEB_PASSWORD=$(pwgen -s 12 1)
-
-mysql -u root -p$MYSQL_PASSWORD -e "create database new_db; GRANT ALL PRIVILEGES ON $MYSQLWEB_DB.* TO $MYSQLWEB_USER@localhost IDENTIFIED BY '$MYSQLWEB_PASSWORD'"
-
+############## SecureMySQL
+mysql_secure_installation 
 
 ############## PHP
 sed -i 's/memory_limit = .*/memory_limit = '${PHP_MEMORY_LIMIT}'/' /etc/php5/cli/php.ini
