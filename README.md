@@ -13,6 +13,10 @@ TODO: Write a project description
 ## Installation
 run ./install.sh
 
+or via Curl
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/milleruk/server_scripts/master/install.sh)"
+
 ## Usage
 
 Create a New Site:
