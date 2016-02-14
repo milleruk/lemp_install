@@ -51,16 +51,11 @@ chown www-data:www-data /var/www/html
 mkdir -p /opt/sites/
 chown www-data:www-data /opt/sites/
 
-# Remce Nginx Samples as we add our own
-rm -f /etc/nginx/conf.d/default.conf
-rm -f /etc/nginx/conf.d/example_ssl.conf
 
 # to generate your dhparam.pem file, run in the terminal - needed for SSL Lets Encrtpy Later
 openssl dhparam -out /etc/nginx/dhparam.pem 2048
 
 # Put standard nginx config in place. Ready for addnewsite.sh
-wget -O /etc/nginx/conf.d/redirect_to_https.conf https://raw.githubusercontent.com/milleruk/server_scripts/master/redirect_to_https.conf
-wget -O /etc/nginx/default_nginx_site.example https://raw.githubusercontent.com/milleruk/server_scripts/master/default_nginx_site.example
 wget -O /etc/nginx/conf.d/nginx_extra.conf https://raw.githubusercontent.com/milleruk/server_scripts/master/nginx_extra.conf
 
 ############## PHP
