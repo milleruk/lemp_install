@@ -87,14 +87,6 @@ apt-get install -y build-essential redis-server memcached fail2ban zsh
 update-rc.d redis-server defaults
 update-rc.d memcached defaults
 
-
-############## drush
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-/usr/local/bin/composer global require drush/drush:dev-master
-echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-
 ############# letsencrypt
 git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 cd /opt/letsencrypt
@@ -113,10 +105,6 @@ service nginx restart
 
 wget -O /root/addsite.sh https://raw.githubusercontent.com/milleruk/server_scripts/master/addsite.sh
 chmod +x /root/addsite.sh
-
-############## ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 
 echo
 echo
